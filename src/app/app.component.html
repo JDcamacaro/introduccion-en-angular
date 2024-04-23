@@ -1,10 +1,43 @@
-<div *ngIf="visible; else notEnable">
+<button (click)="setvisible()">
+  {{ visible ? "ocultar" : "Mostrar" }}
+</button>
+
+@if (visible) {
+
+<h3>{{ title }}</h3>
+
+@if (user != undefined && user.length > 0) {
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (users of user; track $index) {
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      <td>{{ users }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+}@else {
+<p>No existe Registro en el sistema!</p>
+
+}
+}@else {
+<h2>lo sentimos no esta disponible la pagina!</h2>
+}
+<app-counter></app-counter>
+
+<!--<div *ngIf="visible; else notEnable">
   <h3>{{title}}</h3>
 </div>
 
-<button (click)="setvisible()">
-  {{visible? 'ocultar' :'Mostrar'}}
-</button>
 
 <div *ngIf="visible">
   <table *ngIf="(user != undefined && user.length > 0) else isEmpty">
@@ -31,5 +64,4 @@
   <div>
     <h2>lo sentimos no esta disponible la pagina!</h2>
   </div>
-</ng-template>
-
+</ng-template>-->
